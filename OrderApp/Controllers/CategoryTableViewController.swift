@@ -67,12 +67,12 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Category", for: indexPath)
 
-        configureCell(cell, forCategoryAt: indexPath)
+        configure(cell, forCategoryAt: indexPath)
 
         return cell
     }
     
-    func configureCell(_ cell: UITableViewCell, forCategoryAt indexPath: IndexPath) {
+    func configure(_ cell: UITableViewCell, forCategoryAt indexPath: IndexPath) {
         let category = categories[indexPath.row]
         cell.textLabel?.text = category.capitalized
     }

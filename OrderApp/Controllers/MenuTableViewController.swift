@@ -9,6 +9,15 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     let category: String
+    let menuController = MenuController()
+    var menuItems = [MenuItem]()
+    let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "$"
+        
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +27,17 @@ class MenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        title = category.capitalized
+        
+        menuController.fetchMenuItems(forCategory: category) { result in
+            switch result {
+                case .success(let menuItems):
+                    self.updateUI(with: menuItems)
+                case .failure(let error):
+                    self.displayError(error, title: "Failed to Fetch Menu Items for \(self.category)")
+            }
+        }
     }
     
     init?(coder: NSCoder, category: String) {
@@ -29,27 +49,44 @@ class MenuTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateUI(with menuItems: [MenuItem]) {
+        DispatchQueue.main.async {
+            self.menuItems = menuItems
+            self.tableView.reloadData()
+        }
+    }
+    
+    func displayError(_ error: Error, title: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menuItems.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItem", for: indexPath)
 
-        // Configure the cell...
+        configure(cell, forItemAt: indexPath)
 
         return cell
     }
-    */
+    
+    func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let menuItem = menuItems[indexPath.row]
+        cell.textLabel?.text = menuItem.name
+        cell.detailTextLabel?.text = priceFormatter.string(from: NSNumber(value: menuItem.price))
+    }
 
     /*
     // Override to support conditional editing of the table view.

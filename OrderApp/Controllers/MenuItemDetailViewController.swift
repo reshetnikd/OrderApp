@@ -8,12 +8,19 @@
 import UIKit
 
 class MenuItemDetailViewController: UIViewController {
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var addToOrderButton: UIButton!
+    @IBOutlet var detailTextLabel: UILabel!
+    
     let menuItem: MenuItem
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        updateUI()
     }
     
     init?(coder: NSCoder, menuItem: MenuItem) {
@@ -23,6 +30,12 @@ class MenuItemDetailViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateUI() {
+        nameLabel.text = menuItem.name
+        priceLabel.text = MenuItem.priceFormatter.string(from: NSNumber(value: menuItem.price))
+        detailTextLabel.text = menuItem.detailText
     }
     
 

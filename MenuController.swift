@@ -13,7 +13,17 @@ class MenuController {
     func fetchCategories(completion: @escaping (Result<[String], Error>) -> Void) {
         let categoriesURL = baseURL.appendingPathComponent("categories")
         let task = URLSession.shared.dataTask(with: categoriesURL) { data, response, error in
-            
+            if let data = data {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let categoriesResponse = try jsonDecoder.decode(CategoriesResponse.self, from: data)
+                    completion(.success(categoriesResponse.categories))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            }
         }
         task.resume()
     }
@@ -24,7 +34,17 @@ class MenuController {
         components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
         let menuURL = components.url!
         let task = URLSession.shared.dataTask(with: menuURL) { data, response, error in
-            
+            if let data = data {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let menuResponse = try jsonDecoder.decode(MenuResponse.self, from: data)
+                    completion(.success(menuResponse.items))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            }
         }
         task.resume()
     }
@@ -41,7 +61,17 @@ class MenuController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
+            if let data = data {
+                do {
+                    let jsonDecoder = JSONDecoder()
+                    let orderResponse = try jsonDecoder.decode(OrderResponse.self, from: data)
+                    completion(.success(orderResponse.prepTime))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            }
         }
         task.resume()
     }

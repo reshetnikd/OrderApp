@@ -104,14 +104,66 @@
                     <view key="view" contentMode="scaleToFill" id="flR-EZ-P5w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-Tn-LpY">
+                                <rect key="frame" x="15" y="103" width="345" height="266"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MFn-cW-KfC">
+                                        <rect key="frame" x="0.0" y="0.3333333333333286" width="345" height="202.33333333333331"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sIt-1J-7og">
+                                        <rect key="frame" x="0.0" y="211" width="345" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSn-MP-k0J">
+                                                <rect key="frame" x="0.0" y="0.0" width="261.66666666666669" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oev-P9-NfZ">
+                                                <rect key="frame" x="269.66666666666669" y="0.0" width="75.333333333333314" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpK-7U-AYk">
+                                        <rect key="frame" x="0.0" y="249" width="345" height="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hss-aU-OhI">
+                                <rect key="frame" x="15" y="670" width="345" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0f2-BV-48D"/>
+                                </constraints>
+                                <state key="normal" title="Add To Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6qy-Eu-XfE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MFn-cW-KfC" firstAttribute="height" secondItem="flR-EZ-P5w" secondAttribute="height" multiplier="0.25" id="71D-E7-vDb"/>
+                            <constraint firstItem="6qy-Eu-XfE" firstAttribute="trailing" secondItem="hss-aU-OhI" secondAttribute="trailing" constant="15" id="C5x-Vq-MQf"/>
+                            <constraint firstItem="6qy-Eu-XfE" firstAttribute="bottom" secondItem="hss-aU-OhI" secondAttribute="bottom" constant="15" id="Gzf-QN-oCp"/>
+                            <constraint firstItem="CNv-Tn-LpY" firstAttribute="leading" secondItem="6qy-Eu-XfE" secondAttribute="leading" constant="15" id="WfU-ak-5Ts"/>
+                            <constraint firstItem="CNv-Tn-LpY" firstAttribute="top" secondItem="6qy-Eu-XfE" secondAttribute="top" constant="15" id="epm-Ms-aQF"/>
+                            <constraint firstItem="hss-aU-OhI" firstAttribute="leading" secondItem="6qy-Eu-XfE" secondAttribute="leading" constant="15" id="fZK-cK-ARu"/>
+                            <constraint firstItem="6qy-Eu-XfE" firstAttribute="trailing" secondItem="CNv-Tn-LpY" secondAttribute="trailing" constant="15" id="rkr-hU-x1q"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="wjb-CP-TmI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFt-OQ-QcQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3271" y="83"/>
+            <point key="canvasLocation" x="3269.5999999999999" y="82.758620689655174"/>
         </scene>
         <!--Menu-->
         <scene sceneID="VKX-9g-qad">
@@ -199,8 +251,12 @@
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="photo.on.rectangle" catalog="system" width="128" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

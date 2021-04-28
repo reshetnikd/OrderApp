@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    let category: String
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,16 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    init?(coder: NSCoder, category: String) {
+        self.category = category
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -34,7 +34,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="One-Is-bHa" kind="show" id="ekk-C8-1Ke"/>
+                                    <segue destination="One-Is-bHa" kind="show" destinationCreationSelector="showMenu:sender:" id="ekk-C8-1Ke"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -166,6 +166,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="foF-D6-E2m" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ggg-IT-ZmY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

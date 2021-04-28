@@ -9,7 +9,6 @@ import UIKit
 
 class MenuTableViewController: UITableViewController {
     let category: String
-    let menuController = MenuController()
     var menuItems = [MenuItem]()
     let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -30,7 +29,7 @@ class MenuTableViewController: UITableViewController {
         
         title = category.capitalized
         
-        menuController.fetchMenuItems(forCategory: category) { result in
+        MenuController.shared.fetchMenuItems(forCategory: category) { result in
             switch result {
                 case .success(let menuItems):
                     self.updateUI(with: menuItems)

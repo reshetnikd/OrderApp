@@ -8,7 +8,6 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-    let menuController = MenuController()
     var categories = [String]()
 
     override func viewDidLoad() {
@@ -20,7 +19,7 @@ class CategoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        menuController.fetchCategories { result in
+        MenuController.shared.fetchCategories { result in
             switch result {
                 case .success(let categories):
                     self.updateUI(with: categories)

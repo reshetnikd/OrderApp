@@ -14,12 +14,27 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet var addToOrderButton: UIButton!
     @IBOutlet var detailTextLabel: UILabel!
     
+    @IBAction func addToOrderButtonTapped(_ sender: UIButton) {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.1,
+            animations: {
+                self.addToOrderButton.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                self.addToOrderButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            },
+            completion: nil
+        )
+    }
+    
     let menuItem: MenuItem
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addToOrderButton.layer.cornerRadius = 5.0
         updateUI()
     }
     

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -192,7 +193,7 @@
             </objects>
             <point key="canvasLocation" x="471.19999999999999" y="83.497536945812811"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Your Order-->
         <scene sceneID="bWC-a0-QQn">
             <objects>
                 <tableViewController id="nTW-T0-FT0" customClass="OrderTableViewController" customModule="OrderApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,11 +232,61 @@
                             <outlet property="delegate" destination="nTW-T0-FT0" id="TZd-yg-tMe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="mrG-OL-FQ2"/>
+                    <navigationItem key="navigationItem" title="Your Order" id="mrG-OL-FQ2">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="QOf-1p-YhH"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="38Q-ph-kAe" kind="presentation" identifier="confirmOrder" destinationCreationSelector="confirmOrder:" id="lo8-Yl-any"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7IY-ND-wbq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1394.4000000000001" y="829.06403940886707"/>
+        </scene>
+        <!--Order Confiramtion View Controller-->
+        <scene sceneID="Hkd-yn-pkB">
+            <objects>
+                <viewController id="38Q-ph-kAe" customClass="OrderConfiramtionViewController" customModule="OrderApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bbb-gK-jFa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MeA-vX-hOZ">
+                                <rect key="frame" x="15" y="350" width="345" height="58.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEA-b7-9BH">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oh2-Fr-HAm">
+                                        <rect key="frame" x="0.0" y="28.333333333333314" width="345" height="30"/>
+                                        <state key="normal" title="Dismiss"/>
+                                        <connections>
+                                            <segue destination="EcU-Td-LcJ" kind="unwind" identifier="dismissConfirmation" unwindAction="unwindToOrderListWithSegue:" id="pb8-dw-fgl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1VV-iY-dbF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MeA-vX-hOZ" firstAttribute="centerX" secondItem="bbb-gK-jFa" secondAttribute="centerX" id="RAa-L9-pgu"/>
+                            <constraint firstItem="MeA-vX-hOZ" firstAttribute="centerY" secondItem="bbb-gK-jFa" secondAttribute="centerY" id="jUS-wY-i0U"/>
+                            <constraint firstItem="MeA-vX-hOZ" firstAttribute="leading" secondItem="1VV-iY-dbF" secondAttribute="leading" constant="15" id="rJ7-SB-yay"/>
+                            <constraint firstItem="1VV-iY-dbF" firstAttribute="trailing" secondItem="MeA-vX-hOZ" secondAttribute="trailing" constant="15" id="sT2-f1-LX2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmationLabel" destination="eEA-b7-9BH" id="PyF-VW-nwi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGb-L9-KaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="EcU-Td-LcJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2329" y="828"/>
         </scene>
         <!--Your Order-->
         <scene sceneID="wWd-IF-VWU">

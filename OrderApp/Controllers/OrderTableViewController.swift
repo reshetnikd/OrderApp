@@ -8,6 +8,7 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    var minutesToPrepare = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,15 @@ class OrderTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: MenuController.orderUpdatedNotification, object: nil)
     }
+    
+    @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
+        
+    }
 
+    @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfiramtionViewController? {
+        return OrderConfiramtionViewController(coder: coder, minutesToPrepare: minutesToPrepare)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

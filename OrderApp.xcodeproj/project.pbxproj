@@ -21,6 +21,7 @@
 		358D0B1C26399FB800CAF6DE /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D0B1B26399FB800CAF6DE /* Order.swift */; };
 		358D0B1F2639D86500CAF6DE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358D0B1E2639D86500CAF6DE /* MenuController.swift */; };
 		35B1327A263ADBB70041C95D /* OrderConfiramtionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B13279263ADBB70041C95D /* OrderConfiramtionViewController.swift */; };
+		35B1327C263B15FE0041C95D /* Restoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B1327B263B15FE0041C95D /* Restoration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		358D0B1B26399FB800CAF6DE /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		358D0B1E2639D86500CAF6DE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = OrderApp/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
 		35B13279263ADBB70041C95D /* OrderConfiramtionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderConfiramtionViewController.swift; path = OrderApp/Controllers/OrderConfiramtionViewController.swift; sourceTree = SOURCE_ROOT; };
+		35B1327B263B15FE0041C95D /* Restoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restoration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		358D0B1326399B4200CAF6DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				35B1327B263B15FE0041C95D /* Restoration.swift */,
 				358D0AF9263997CE00CAF6DE /* AppDelegate.swift */,
 				358D0AFB263997CE00CAF6DE /* SceneDelegate.swift */,
 				358D0B02263997D000CAF6DE /* Assets.xcassets */,
@@ -95,10 +98,10 @@
 		358D0B1426399B5400CAF6DE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				358D0B0D26399B0D00CAF6DE /* CategoryTableViewController.swift */,
 				358D0B1E2639D86500CAF6DE /* MenuController.swift */,
 				358D0B0F26399B1900CAF6DE /* MenuTableViewController.swift */,
 				358D0B1526399C9300CAF6DE /* MenuItemDetailViewController.swift */,
+				358D0B0D26399B0D00CAF6DE /* CategoryTableViewController.swift */,
 				358D0B1126399B2400CAF6DE /* OrderTableViewController.swift */,
 				35B13279263ADBB70041C95D /* OrderConfiramtionViewController.swift */,
 			);
@@ -187,6 +190,7 @@
 			files = (
 				358D0B1F2639D86500CAF6DE /* MenuController.swift in Sources */,
 				358D0B1826399E0D00CAF6DE /* MenuItem.swift in Sources */,
+				35B1327C263B15FE0041C95D /* Restoration.swift in Sources */,
 				358D0AFA263997CE00CAF6DE /* AppDelegate.swift in Sources */,
 				35B1327A263ADBB70041C95D /* OrderConfiramtionViewController.swift in Sources */,
 				358D0B1A26399F2400CAF6DE /* ResponseModels.swift in Sources */,

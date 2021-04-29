@@ -95,4 +95,17 @@ class MenuController {
         }
         task.resume()
     }
+    
+    func updateUserActivity(with controller: StateRestorationController) {
+        switch controller {
+            case .menu(let category):
+                userActivity.menuCategory = category
+            case .menuItemDetail(let menuItem):
+                userActivity.menuItem = menuItem
+            case .order, .categories:
+                break
+        }
+        
+        userActivity.controllerIdentifier = controller.identifier
+    }
 }

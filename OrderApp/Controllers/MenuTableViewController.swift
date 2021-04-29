@@ -32,6 +32,11 @@ class MenuTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        MenuController.shared.updateUserActivity(with: .menu(category: category))
+    }
+    
     init?(coder: NSCoder, category: String) {
         self.category = category
         super.init(coder: coder)

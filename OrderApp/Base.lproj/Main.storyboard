@@ -233,7 +233,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Order" id="mrG-OL-FQ2">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="QOf-1p-YhH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="QOf-1p-YhH">
+                            <connections>
+                                <action selector="submitTapped:" destination="nTW-T0-FT0" id="9c6-n7-hQt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="38Q-ph-kAe" kind="presentation" identifier="confirmOrder" destinationCreationSelector="confirmOrder:" id="lo8-Yl-any"/>

@@ -15,6 +15,7 @@ class OrderConfiramtionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        confirmationLabel.text = "Thank you for your order! Your wait time is approximately \(minutesToPrepare) minutes."
     }
     
     init?(coder: NSCoder, minutesToPrepare: Int) {

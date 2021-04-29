@@ -25,12 +25,51 @@ class OrderTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: MenuController.orderUpdatedNotification, object: nil)
     }
     
+    @IBAction func submitTapped(_ sender: UIBarButtonItem) {
+        let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
+        
+        let formattedTotal = MenuItem.priceFormatter.string(from: NSNumber(value: orderTotal)) ?? "\(orderTotal)"
+        
+        let alertController = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedTotal)", preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Submit", style: .default, handler: { _ in
+            self.uploadOrder()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
         
     }
 
     @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfiramtionViewController? {
         return OrderConfiramtionViewController(coder: coder, minutesToPrepare: minutesToPrepare)
+    }
+    
+    func uploadOrder() {
+        let menuIds = MenuController.shared.order.menuItems.map { $0.id }
+        
+        MenuController.shared.submitOrder(forMenuIDs: menuIds) { result in
+            switch result {
+                case .success(let minutesToPrepare):
+                    DispatchQueue.main.async {
+                        self.minutesToPrepare = minutesToPrepare
+                        self.performSegue(withIdentifier: "confirmOrder", sender: nil)
+                    }
+                case .failure(let error):
+                    self.displayError(error, title: "Order Submission Failed")
+            }
+        }
+    }
+    
+    func displayError(_ error: Error, title: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Table view data source

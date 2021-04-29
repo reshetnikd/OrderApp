@@ -41,7 +41,9 @@ class OrderTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
-        
+        if segue.identifier == "dismissConfiramtion" {
+            MenuController.shared.order.menuItems.removeAll()
+        }
     }
 
     @IBSegueAction func confirmOrder(_ coder: NSCoder) -> OrderConfiramtionViewController? {

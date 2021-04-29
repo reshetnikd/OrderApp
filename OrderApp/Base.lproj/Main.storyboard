@@ -268,7 +268,7 @@
                                         <rect key="frame" x="0.0" y="28.333333333333314" width="345" height="30"/>
                                         <state key="normal" title="Dismiss"/>
                                         <connections>
-                                            <segue destination="EcU-Td-LcJ" kind="unwind" identifier="dismissConfirmation" unwindAction="unwindToOrderListWithSegue:" id="pb8-dw-fgl"/>
+                                            <segue destination="EcU-Td-LcJ" kind="unwind" identifier="dismissConfiramtion" unwindAction="unwindToOrderListWithSegue:" id="pb8-dw-fgl"/>
                                         </connections>
                                     </button>
                                 </subviews>
